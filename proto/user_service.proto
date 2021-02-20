@@ -1,0 +1,38 @@
+syntax = "proto3";
+package proto;
+
+option go_package = ".;pb";
+
+message CreateUserRequest {
+    string email = 1;
+    uint64 amount = 2;
+}
+
+message UpdateUserRequest {
+    string id = 1;
+    string email = 2;
+    uint64 amount = 3;
+}
+
+message IDRequest {
+    string id = 1;
+}
+
+message User {
+    string id = 1;
+    string email = 2;
+    uint64 amount = 3;
+}
+
+message Response {
+    string message = 1;
+    string error = 2;
+    optional User user = 3;
+}
+
+service UserService {
+    rpc CreateUser(CreateUserRequest) returns (Response) {};
+    rpc UpdateUser(UpdateUserRequest) returns (Response) {};
+    rpc GetUser(IDRequest) returns (Response) {};
+    rpc DeleteUser(IDRequest) returns (Response) {};
+}

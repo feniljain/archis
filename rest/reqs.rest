@@ -1,0 +1,32 @@
+http://localhost:8080/api
+id=9b396855-71a5-4d26-be6f-c75b0b9f8c21
+--
+http://localhost:8080/api
+
+POST /user
+{
+    "email":  "someone@gmail.com",
+    "amount": 10
+}
+
+--
+PUT /user
+{
+    "_id": "4f401518-170b-4e5f-808a-c2a366ba3332",
+    "email":  "someone@gmail.com",
+    "amount": 20
+}
+
+--
+DELETE /user
+{
+    "_id": "4f401518-170b-4e5f-808a-c2a366ba3332",
+    "email":  "someone@gmail.com",
+    "amount": 20
+}
+
+--
+GET /user?id=:id
+
+--
+DELETE /user?id=:id
