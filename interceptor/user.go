@@ -36,7 +36,7 @@ func (i Intercept) CreateUser(ctx context.Context, req *pb.CreateUserRequest) (*
 func (i Intercept) UpdateUser(ctx context.Context, req *pb.UpdateUserRequest) (*pb.Response, error) {
 	intAmount := int(req.Amount)
 
-	updatedUser, err := i.userSvc.UpdateUser(user.UpdateRequest{
+	_, err := i.userSvc.UpdateUser(user.UpdateRequest{
 		ID:     req.Id,
 		Amount: &intAmount,
 		Email:  &req.Email,
@@ -48,18 +48,18 @@ func (i Intercept) UpdateUser(ctx context.Context, req *pb.UpdateUserRequest) (*
 	return &pb.Response{
 		Message: "User updated successfully!",
 		Error:   "",
-		User: &pb.User{
-			Amount: uint64(updatedUser.Amount),
-			Id:     updatedUser.ID,
-			Email:  updatedUser.Email,
-		},
+		//User: &pb.User{
+		//	Amount: uint64(updatedUser.Amount),
+		//	Id:     updatedUser.ID,
+		//	Email:  updatedUser.Email,
+		//},
 	}, nil
 }
 
 //GetUser fetches a user
 func (i Intercept) GetUser(ctx context.Context, req *pb.IDRequest) (*pb.Response, error) {
 
-	fetchedUser, err := i.userSvc.GetUser(req.Id)
+	_, err := i.userSvc.GetUser(req.Id)
 	if err != nil {
 		return nil, err
 	}
@@ -67,11 +67,11 @@ func (i Intercept) GetUser(ctx context.Context, req *pb.IDRequest) (*pb.Response
 	return &pb.Response{
 		Message: "User fetched successfully!",
 		Error:   "",
-		User: &pb.User{
-			Amount: uint64(fetchedUser.Amount),
-			Id:     fetchedUser.ID,
-			Email:  fetchedUser.Email,
-		},
+		//User: &pb.User{
+		//	Amount: uint64(fetchedUser.Amount),
+		//	Id:     fetchedUser.ID,
+		//	Email:  fetchedUser.Email,
+		//},
 	}, nil
 }
 
